@@ -176,12 +176,68 @@
     </section><!-- /.p-product -->
 
     <!-- ==================== 写真の帯 ==================== -->
-    <div class="p-band" aria-hidden="true"></div>
+    <div class="p-band" aria-hidden="true">
+      <picture>
+        <source media="(min-width: 768px)" srcset="img/band_pc.webp">
+        <img src="img/band_sp.webp" alt="" width="375" height="135" loading="lazy">
+      </picture>
+    </div><!-- /.p-band -->
 
     <!-- ==================== オファー ==================== -->
     <section class="p-offer" id="offer">
       <div class="l-inner">
-        <!-- 無料サンプル / 定期便 -->
+        <div class="p-offer__panel">
+
+          <!-- 無料サンプル -->
+          <div class="p-offer__plan">
+            <figure class="p-offer__img">
+              <div class="p-offer__img-box p-offer__img-box--sample">
+                <img class="p-offer__photo" src="img/offer-sample.webp" alt="AOSU UV BEAUTY ESSENCE のサンプルボトルとポーチ" width="816" height="660" loading="lazy">
+              </div>
+            </figure>
+            <div class="p-offer__body">
+              <p class="p-offer__lead">毎日使いたくなる心地よさを<br class="u-sp-only">体験できる</p>
+              <h2 class="p-offer__title">まずは確かめてみる</h2>
+              <p class="p-offer__tag p-offer__tag--blue">送料無料</p>
+              <div class="p-offer__main">
+                <p class="p-offer__main-text">初めての方限定　無料体験</p>
+              </div>
+              <p class="p-offer__note">※お一人様１回限り</p>
+            </div>
+            <div class="p-offer__cta">
+              <a href="#" class="c-button">無料サンプルを試す</a>
+            </div>
+          </div>
+
+          <!-- 定期便 -->
+          <div class="p-offer__plan">
+            <figure class="p-offer__img">
+              <div class="p-offer__img-box p-offer__img-box--regular">
+                <img class="p-offer__photo" src="img/offer-regular.webp" alt="AOSU UV BEAUTY ESSENCE の箱とボトル" width="1254" height="1018" loading="lazy">
+                <!-- 箱の角に重ねる丸バッジ -->
+                <img class="p-offer__badge" src="img/sale-stacker.png" alt="初回限定40%OFF" width="290" height="290" loading="lazy">
+              </div>
+            </figure>
+            <div class="p-offer__body">
+              <p class="p-offer__lead">たっぷり使えてお得に続けられる</p>
+              <h2 class="p-offer__title">定期便でお得に始める</h2>
+              <p class="p-offer__tag p-offer__tag--gold">初回特別価格</p>
+              <div class="p-offer__main">
+                <!-- 左：通常価格（2段）／右：特別価格。「(税込)」は「円」の上に積む -->
+                <p class="p-offer__regular">
+                  <span class="p-offer__regular-label">通常価格</span>
+                  <s class="p-offer__regular-price">3,300<span class="p-offer__unit"><span class="p-offer__tax">(税込)</span>円</span></s>
+                </p>
+                <p class="p-offer__price">1,980<span class="p-offer__unit p-offer__unit--large"><span class="p-offer__tax">(税込)</span>円</span></p>
+              </div>
+              <p class="p-offer__note">2回目以降も10%OFF　送料無料</p>
+            </div>
+            <div class="p-offer__cta">
+              <a href="#" class="c-button c-button--gold">定期便を試す</a>
+            </div>
+          </div>
+
+        </div><!-- /.p-offer__panel -->
       </div>
     </section><!-- /.p-offer -->
 
