@@ -326,7 +326,34 @@ body {
     width: clamp(260px, 22vw, 320px);
   }
 }
-/* .p-lead {} */
+
+/* ---------- リード ---------- */
+/* 文字のまとまりは中央、中は左揃え */
+.p-lead {
+  padding-block: 32px;
+}
+
+.p-lead__text {
+  width: fit-content;
+  margin-inline: auto;
+  font-family: var(--font-mincho);
+  font-size: var(--fz-section-title);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 768px) {
+  .p-lead {
+    padding-block: 160px;
+    background-color: var(--color-bg-product);  /* カンプは玉ボケ入りの淡い青。画像があれば差し替え */
+  }
+
+  .p-lead__text {
+    letter-spacing: 0.08em;
+  }
+}
+
 /* .p-feature {} */
 /* .p-voice {} */
 /* .p-product {} */
