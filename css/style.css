@@ -38,6 +38,9 @@
   --fz-caption: 11px;
   --fz-en-label: 10px;
   --fz-price: 28px;
+  --fz-voice-title: 20px;   /* お客様の声の見出し（PC・SP共通） */
+  --fz-voice-text: 16px;    /* お客様の声の本文（PC・SP共通） */
+  --fz-product-check: 14px; /* 商品紹介のチェック項目 */
 
   /* 余白（SPのコンテンツ幅：375 - 25×2 = 325px） */
   --inner-padding: 25px;
@@ -55,6 +58,7 @@
     --fz-caption: 12px;
     --fz-en-label: 12px;
     --fz-price: 36px;
+    --fz-product-check: 20px;
   }
 }
 
@@ -532,8 +536,231 @@ body {
     margin-top: 120px;
   }
 }
-/* .p-voice {} */
-/* .p-product {} */
+/* ---------- お客様の声 ---------- */
+/*
+  引用符は疑似要素で置く。どちらも position: absolute なので行の高さに影響しない。
+  開き（“）：カードの左上／閉じ（”）：本文の右下
+*/
+.p-voice {
+  padding-block: 32px 64px;
+}
+
+.p-voice__list {
+  display: grid;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.p-voice__item {
+  position: relative;
+  padding-left: 52px;
+  padding-right: 40px;
+}
+
+.p-voice__item::before,
+.p-voice__text::after {
+  position: absolute;
+  font-family: var(--font-mincho);
+  font-size: 64px;
+  line-height: 1;
+  color: var(--color-accent-light);
+}
+
+/* 開きの引用符（日本語フォントの“は全角幅で右寄りに描かれるので、左へずらす） */
+.p-voice__item::before {
+  content: "\201C";
+  top: -12px;
+  left: -16px;
+}
+
+.p-voice__title {
+  font-size: var(--fz-voice-title);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.p-voice__text {
+  position: relative;
+  margin-top: 16px;
+  font-size: var(--fz-voice-text);
+  line-height: 1.5;
+}
+
+/* 閉じの引用符 */
+.p-voice__text::after {
+  content: "\201D";
+  top: calc(100% - 16px);
+  right: -56px;
+}
+
+.p-voice__attr {
+  margin-top: 24px;
+  font-size: var(--fz-caption);
+  line-height: 1.7;
+}
+
+.p-voice__note {
+  margin-top: 40px;
+  font-size: var(--fz-caption);
+  line-height: 1.7;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .p-voice {
+    padding-block: 80px;
+  }
+
+  /* 3カラム（カード 328px × 3 ＋ 間 80px） */
+  .p-voice__list {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 80px;
+    max-width: 1144px;
+    margin: 104px auto 0;
+  }
+
+  .p-voice__item {
+    padding-left: 32px;
+    padding-right: 40px;
+  }
+
+  .p-voice__item::before {
+    left: -32px;
+  }
+
+  .p-voice__attr {
+    margin-top: 16px;
+  }
+
+  .p-voice__note {
+    margin-top: 48px;
+  }
+}
+/* ---------- 商品紹介 ---------- */
+/* SP：ボトル → テキスト／PC：ボトル（左）＋テキスト（右） */
+.p-product {
+  padding-block: 56px;
+  background-color: var(--color-bg-product);
+}
+
+.p-product__img {
+  width: 104px;
+  margin-inline: auto;
+}
+
+.p-product__body {
+  margin-top: 24px;
+}
+
+.p-product__title {
+  font-family: var(--font-mincho);
+  font-size: var(--fz-feature-catch);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+.p-product__text {
+  font-size: var(--fz-body);
+  line-height: 2;
+}
+
+.p-product__title + .p-product__text {
+  margin-top: 8px;
+}
+
+/* チェック項目：SPは帯なしのリスト */
+.p-product__list {
+  margin-top: 24px;
+}
+
+.p-product__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 8px;
+  font-size: var(--fz-product-check);
+  line-height: 1.5;
+}
+
+/* チェックの印 */
+.p-product__item::before {
+  content: "";
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background: url("../img/icon_check.png") center / contain no-repeat;
+}
+
+.p-product__note {
+  margin-top: 8px;
+  font-size: var(--fz-caption);
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .p-product {
+    padding-block: 64px 88px;
+  }
+
+  /* ボトル 282px ＋ 間 136px ＋ テキスト */
+  .p-product__inner {
+    display: grid;
+    grid-template-columns: 282px 1fr;
+    column-gap: 136px;
+    align-items: start;
+    max-width: 1090px;
+    margin-inline: auto;
+  }
+
+  .p-product__img {
+    width: 282px;
+  }
+
+  .p-product__body {
+    margin-top: 0;
+    padding-top: 16px;
+  }
+
+  .p-product__title {
+    letter-spacing: 0.06em;
+  }
+
+  .p-product__title + .p-product__text {
+    margin-top: 16px;
+  }
+
+  .p-product__text + .p-product__text {
+    margin-top: 16px;
+  }
+
+  /* 帯付きの2列。左の列から縦に並べる */
+  .p-product__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 72px);
+    grid-auto-flow: column;
+    gap: 48px 40px;
+    margin-top: 112px;
+  }
+
+  .p-product__item {
+    gap: 16px;
+    padding: 0 0 0 24px;
+    background-color: var(--color-bg-chip);
+    font-weight: 500;
+  }
+
+  .p-product__item::before {
+    width: 16px;
+    height: 16px;
+  }
+
+  .p-product__note {
+    margin-top: 32px;
+  }
+}
 /* .p-band {} */
 /* .p-offer {} */
 
