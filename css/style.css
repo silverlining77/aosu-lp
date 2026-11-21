@@ -224,7 +224,35 @@ body {
   }
 }
 
-/* .c-section-title {} */
+/* ---------- セクション見出し（日本語＋英字ラベル） ---------- */
+.c-section-title {
+  text-align: center;
+  font-weight: 400;
+}
+
+.c-section-title__ja {
+  display: block;
+  font-family: var(--font-mincho);
+  font-size: var(--fz-section-title);
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.c-section-title__en {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-en);
+  font-size: var(--fz-en-label);
+  line-height: 1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .c-section-title__ja {
+    letter-spacing: 0.08em;
+  }
+}
 
 
 /* =========================================================
@@ -346,7 +374,8 @@ body {
 @media (min-width: 768px) {
   .p-lead {
     padding-block: 160px;
-    background-color: var(--color-bg-product);  /* カンプは玉ボケ入りの淡い青。画像があれば差し替え */
+    /* 背景画像はリード＋特徴で1枚。リードは上端を使う */
+    background: url("../img/offer-bg1.webp") center top / 100% auto no-repeat var(--color-white);
   }
 
   .p-lead__text {
@@ -354,7 +383,155 @@ body {
   }
 }
 
-/* .p-feature {} */
+/* ---------- 3つの特徴 ---------- */
+/*
+  HTMLは「写真 → テキスト」の順。SPはそのまま縦に並べ、
+  PCは2列にしてテキストを左へ（--reverse は写真が左）。
+*/
+.p-feature {
+  padding-block: 40px 48px;
+  background: url("../img/offer-bg1.webp") center bottom / cover no-repeat var(--color-bg-feature);
+}
+
+.p-feature__list {
+  display: grid;
+  gap: 48px;
+  margin-top: 40px;
+}
+
+.p-feature__img img {
+  width: 100%;
+}
+
+/* テキスト：左に縦書きの番号を置くぶん空ける */
+.p-feature__body {
+  position: relative;
+  margin-top: 24px;
+  padding-left: 40px;
+  padding-right: 16px;
+}
+
+/* 縦書きの「FEATURE」＋丸囲みの番号 */
+.p-feature__num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 24px;
+  font-family: var(--font-en);
+  line-height: 1;
+}
+
+.p-feature__num-label {
+  writing-mode: vertical-rl;
+  padding-right: 2px;
+  border-right: 1px solid currentColor;
+  font-size: var(--fz-en-label);
+  letter-spacing: 0.3em;
+}
+
+.p-feature__num-circle {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: var(--fz-en-label);
+}
+
+/* ラベル（例：冷却処方） */
+.p-feature__label {
+  font-size: var(--fz-feature-title);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+/* キャッチ：文節（span）の切れ目でだけ改行する */
+.p-feature__catch {
+  margin-top: 8px;
+  font-family: var(--font-mincho);
+  font-size: var(--fz-feature-catch);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+.p-feature__catch-phrase {
+  display: inline-block;
+}
+
+/* 本文：SPは手動の改行なしで折り返す */
+.p-feature__text {
+  margin-top: 16px;
+  font-size: var(--fz-body-large);
+  line-height: 1.8;
+}
+
+.p-feature__cta {
+  margin-top: 64px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .p-feature {
+    padding-block: 80px;
+    background-size: 100% auto;  /* リードから続く画像の下側を使う */
+  }
+
+  .p-feature__list {
+    gap: 64px;
+    margin-top: 80px;
+  }
+
+  /* 2列：テキスト左・写真右 */
+  .p-feature__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 80px;
+    align-items: start;
+  }
+
+  .p-feature__body {
+    order: -1;
+    margin-top: 0;
+    padding-left: 80px;
+    padding-right: 0;
+  }
+
+  /* 写真が左 */
+  .p-feature__item--reverse .p-feature__body {
+    order: 0;
+  }
+
+  .p-feature__num {
+    left: -8px;
+    width: 40px;
+  }
+
+  .p-feature__num-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .p-feature__catch {
+    margin-top: 16px;
+    letter-spacing: 0.06em;
+  }
+
+  .p-feature__text {
+    margin-top: 24px;
+    line-height: 2;
+  }
+
+  .p-feature__cta {
+    margin-top: 120px;
+  }
+}
 /* .p-voice {} */
 /* .p-product {} */
 /* .p-band {} */
