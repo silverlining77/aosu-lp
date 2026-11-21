@@ -260,18 +260,18 @@ body {
 .p-fv__catch {
   font-size: var(--fz-fv-catch);
   line-height: 1.5;
-  letter-spacing: 0.05em;
+  letter-spacing: 0;             /* SPで1行に収めるため字間なし（PCも同じ） */
 }
 
 .p-fv__sub {
-  margin-top: 16px;
+  margin-top: 8px;
   font-size: 17px;
   line-height: 1.5;
   letter-spacing: 0.05em;
 }
 
 .p-fv__lead {
-  margin-top: 4px;
+  margin-top: 0;
   font-size: 12px;
   line-height: 1.5;
   letter-spacing: 0.06em;
@@ -301,7 +301,6 @@ body {
   /* 画面幅に合わせて縮む（最大40px） */
   .p-fv__catch {
     font-size: clamp(26px, 2.78vw, var(--fz-fv-catch));
-    letter-spacing: 0;           /* カンプの横幅に合わせて字間なし */
   }
 
   .p-fv__sub {
