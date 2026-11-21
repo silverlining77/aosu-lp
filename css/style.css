@@ -1,0 +1,356 @@
+@charset "UTF-8";
+
+/* =========================================================
+   Foundation
+   ========================================================= */
+
+/* ---------- 変数 ---------- */
+:root {
+  /* ネイビー */
+  --color-navy-dark: #1b2f49;   /* フッター背景・ヒーローの文字 */
+  --color-navy: #153e6a;        /* ボタン */
+  --color-text: #394587;        /* 見出し・本文・価格 */
+
+  /* アクセント */
+  --color-gold: #b19452;        /* 定期便ボタン・タグ枠 */
+  --color-blue: #287ec5;        /* 送料無料タグ */
+  --color-accent-light: #c8d8e8;/* 引用符・チェックマーク */
+  --color-white: #fff;
+
+  /* 背景 */
+  --color-bg-feature: #e5ecf8;
+  --color-bg-product: #f6fbfc;
+  --color-bg-offer: #ebf0f5;
+  --color-bg-chip: #dde7f4;
+
+  /* フォント */
+  --font-mincho: "Sawarabi Mincho", serif;
+  --font-sans: "Inter", "Noto Sans JP", sans-serif;
+  --font-en: "Inter", sans-serif;
+
+  /* 文字サイズ（SP） */
+  --fz-fv-catch: 24px;
+  --fz-section-title: 24px;
+  --fz-feature-catch: 22px;
+  --fz-feature-title: 16px;
+  --fz-body-large: 15px;
+  --fz-body: 14px;
+  --fz-caption: 11px;
+  --fz-en-label: 10px;
+  --fz-price: 28px;
+
+  /* 余白（SPのコンテンツ幅：375 - 25×2 = 325px） */
+  --inner-padding: 25px;
+}
+
+/* 文字サイズ（PC） */
+@media (min-width: 768px) {
+  :root {
+    --fz-fv-catch: 40px;
+    --fz-section-title: 40px;
+    --fz-feature-catch: 36px;
+    --fz-feature-title: 20px;
+    --fz-body-large: 16px;
+    --fz-body: 16px;
+    --fz-caption: 12px;
+    --fz-en-label: 12px;
+    --fz-price: 36px;
+  }
+}
+
+/* ---------- リセット ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1, h2, h3, h4, p,
+ul, ol, li, figure {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- ベース ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fz-body);
+  line-height: 2;
+  letter-spacing: 0.03em;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 768px) {
+  body {
+    letter-spacing: 0.04em;
+  }
+}
+
+
+/* =========================================================
+   Layout
+   ========================================================= */
+
+/* コンテンツ幅：PC 1250px / SP 325px */
+.l-inner {
+  width: 100%;
+  max-width: calc(1250px + var(--inner-padding) * 2);
+  margin-inline: auto;
+  padding-inline: var(--inner-padding);
+}
+
+/* ---------- ヘッダー（FVの上に重ねる） ---------- */
+.l-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 20px var(--inner-padding);
+}
+
+.l-header__logo {
+  font-family: var(--font-en);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  color: var(--color-navy-dark);
+}
+
+@media (min-width: 768px) {
+  .l-header {
+    padding: 40px 4.8%;
+  }
+  .l-header__logo {
+    font-size: 32px;
+    letter-spacing: 0.44em;
+  }
+}
+
+/* .l-footer {} */
+
+
+/* =========================================================
+   Component
+   ========================================================= */
+
+/* ---------- ボタン ---------- */
+.c-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  max-width: 100%;
+  height: 56px;
+  padding-inline: 48px;
+  border-radius: 999px;
+  background-color: var(--color-navy);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(21, 62, 106, 0.2);
+  transition: background-color 0.3s;
+}
+
+/* 右端の矢印 */
+.c-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  width: 8px;
+  height: 8px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* ホバー：少し明るく */
+@media (hover: hover) {
+  .c-button:hover {
+    background-color: #24578c;
+  }
+}
+
+/* 金のボタン（定期便） */
+.c-button--gold {
+  background-color: var(--color-gold);
+  box-shadow: 0 4px 12px rgba(177, 148, 82, 0.25);
+}
+
+@media (hover: hover) {
+  .c-button--gold:hover {
+    background-color: #c4a867;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-button {
+    width: 320px;
+    height: 64px;
+    font-size: 16px;
+  }
+
+  /* PCは矢印を大きく細く */
+  .c-button::after {
+    right: 32px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* .c-section-title {} */
+
+
+/* =========================================================
+   Project
+   ========================================================= */
+
+/* ---------- FV ---------- */
+/*
+  背景画像に瓶とバッジが入っているので、
+  画像の縦横比を保ったまま、文字とボタンを「%」で重ねる。
+  位置がずれたら、下の top / left / bottom の値を調整する。
+*/
+.p-fv {
+  position: relative;
+}
+
+.p-fv__bg img {
+  width: 100%;
+  height: auto;
+}
+
+/* キャッチ・サブコピー */
+.p-fv__text {
+  position: absolute;
+  top: 11%;                      /* SP：上からの位置 */
+  left: var(--inner-padding);
+  right: var(--inner-padding);
+  font-family: var(--font-mincho);
+  font-weight: 400;
+  color: var(--color-navy-dark);
+}
+
+.p-fv__catch {
+  font-size: var(--fz-fv-catch);
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.p-fv__sub {
+  margin-top: 16px;
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.p-fv__lead {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+}
+
+/* ボタン */
+.p-fv__cta {
+  position: absolute;
+  bottom: 6%;                    /* SP：下からの位置 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  max-width: calc(100% - var(--inner-padding) * 2);
+}
+
+.p-fv__cta .c-button {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .p-fv__text {
+    top: 28.4%;                  /* PC：上からの位置 */
+    left: 4.8%;                  /* PC：左からの位置 */
+    right: auto;
+  }
+
+  /* 画面幅に合わせて縮む（最大40px） */
+  .p-fv__catch {
+    font-size: clamp(26px, 2.78vw, var(--fz-fv-catch));
+    letter-spacing: 0;           /* カンプの横幅に合わせて字間なし */
+  }
+
+  .p-fv__sub {
+    margin-top: clamp(16px, 1.7vw, 24px);
+    font-size: clamp(16px, 1.53vw, 22px);
+  }
+
+  .p-fv__lead {
+    margin-top: 0;
+    letter-spacing: 0.08em;
+    font-size: clamp(12px, 1.04vw, 15px);
+  }
+
+  .p-fv__cta {
+    bottom: 7.5%;                /* PC：下からの位置 */
+    left: 4.8%;                  /* キャッチと左端を揃える */
+    transform: none;
+    width: auto;
+    max-width: none;
+  }
+
+  .p-fv__cta .c-button {
+    width: clamp(260px, 22vw, 320px);
+  }
+}
+/* .p-lead {} */
+/* .p-feature {} */
+/* .p-voice {} */
+/* .p-product {} */
+/* .p-band {} */
+/* .p-offer {} */
+
+
+/* =========================================================
+   Utility
+   ========================================================= */
+
+.u-sp-only {
+  display: inline;
+}
+.u-pc-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .u-sp-only {
+    display: none;
+  }
+  .u-pc-only {
+    display: inline;
+  }
+}
