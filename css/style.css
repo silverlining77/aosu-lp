@@ -165,7 +165,126 @@ body {
   }
 }
 
-/* .l-footer {} */
+/* ---------- フッター ---------- */
+/* SP：中央揃えの縦並び／PC：ロゴ左・ナビ右の横並び（左右の余白はヘッダーと同じ） */
+.l-footer {
+  padding-block: 40px 32px;
+  background-color: var(--color-navy-dark);
+  color: var(--color-white);
+}
+
+.l-footer__inner {
+  padding-inline: var(--inner-padding);
+  text-align: center;
+}
+
+/* ロゴ画像は文字のまわりに透明の余白がある */
+.l-footer__logo img {
+  width: 214px;
+  margin-inline: auto;
+}
+
+.l-footer__sns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.l-footer__sns-link {
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.l-footer__sns-link img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.l-footer__links {
+  margin-top: 56px;
+  font-size: var(--fz-body);
+  line-height: 2;
+}
+
+/* コピーライト：小さく控えめに */
+.l-footer__copy {
+  margin-top: 56px;
+  font-family: var(--font-en);
+  font-size: var(--fz-caption);
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: color-mix(in srgb, var(--color-white) 60%, transparent);
+}
+
+.l-footer__copy small {
+  font-size: inherit;
+}
+
+@media (hover: hover) {
+  .l-footer__sns-link:hover,
+  .l-footer__links a:hover {
+    opacity: 0.7;
+  }
+}
+
+@media (min-width: 768px) {
+  .l-footer {
+    padding-block: 32px 24px;
+  }
+
+  /* PCは横並びの行の下、中央に置く */
+  .l-footer__copy {
+    margin-top: 48px;
+  }
+
+  .l-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 4.8%;
+  }
+
+  /* 透明の余白（幅の約9.6%）を打ち消して、文字の左端をFVのキャッチと揃える */
+  .l-footer__logo img {
+    width: 322px;
+    margin-left: -31px;
+  }
+
+  .l-footer__nav {
+    display: flex;
+    align-items: center;
+    gap: 112px;
+  }
+
+  .l-footer__sns {
+    gap: 40px;
+    margin-top: 0;
+  }
+
+  .l-footer__sns-link img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* リンクを横並びにして、間に縦線 */
+  .l-footer__links {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    line-height: 1.5;
+  }
+
+  .l-footer__link-item + .l-footer__link-item {
+    margin-left: 80px;
+    padding-left: 80px;
+    border-left: 1px solid color-mix(in srgb, var(--color-white) 60%, transparent);
+    line-height: 64px;
+  }
+}
 
 
 /* =========================================================
