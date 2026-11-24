@@ -157,7 +157,7 @@ body {
 
 @media (min-width: 768px) {
   .l-header {
-    padding: 40px 4.8%;
+    padding: 48px 4.8%;
   }
   .l-header__logo {
     font-size: 32px;
@@ -454,8 +454,24 @@ body {
 }
 
 @media (min-width: 768px) {
+  /* PCは高さ816px（1440px幅のとき）。画像は上を基準にして下をトリミング */
+  .p-fv {
+    aspect-ratio: 1440 / 816;
+  }
+
+  .p-fv__bg,
+  .p-fv__bg img {
+    display: block;
+    height: 100%;
+  }
+
+  .p-fv__bg img {
+    object-fit: cover;
+    object-position: center top;
+  }
+
   .p-fv__text {
-    top: 28.4%;                  /* PC：上からの位置 */
+    top: 17.2%;                  /* PC：上からの位置 */
     left: 4.8%;                  /* PC：左からの位置 */
     right: auto;
   }
@@ -463,21 +479,23 @@ body {
   /* 画面幅に合わせて縮む（最大40px） */
   .p-fv__catch {
     font-size: clamp(26px, 2.78vw, var(--fz-fv-catch));
+    letter-spacing: 0.04em;      /* SPは1行に収めるため0、PCだけ少し空ける */
   }
 
+  /* 画面幅に合わせて縮む（最大32px / 22px） */
   .p-fv__sub {
     margin-top: clamp(16px, 1.7vw, 24px);
-    font-size: clamp(16px, 1.53vw, 22px);
+    font-size: clamp(16px, 2.22vw, 32px);
   }
 
   .p-fv__lead {
     margin-top: 0;
     letter-spacing: 0.08em;
-    font-size: clamp(12px, 1.04vw, 15px);
+    font-size: clamp(12px, 1.53vw, 22px);
   }
 
   .p-fv__cta {
-    bottom: 7.5%;                /* PC：下からの位置 */
+    bottom: 8.8%;                /* PC：下からの位置（1440px幅で下端から72px。バッジとの間は80px） */
     left: 4.8%;                  /* キャッチと左端を揃える */
     transform: none;
     width: auto;
