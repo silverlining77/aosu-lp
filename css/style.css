@@ -209,9 +209,19 @@ body {
   line-height: 2;
 }
 
+/* 架空のサイトである旨の注意書き（コピーライトとひとまとまり） */
+.l-footer__note {
+  margin-top: 56px;
+  font-size: var(--fz-caption);
+  line-height: 1.7;
+  text-align: center;
+  text-wrap: balance;
+  color: color-mix(in srgb, var(--color-white) 60%, transparent);
+}
+
 /* コピーライト：小さく控えめに */
 .l-footer__copy {
-  margin-top: 56px;
+  margin-top: 16px;
   font-family: var(--font-en);
   font-size: var(--fz-caption);
   line-height: 1;
@@ -237,7 +247,7 @@ body {
   }
 
   /* PCは横並びの行の下、中央に置く */
-  .l-footer__copy {
+  .l-footer__note {
     margin-top: 48px;
   }
 
